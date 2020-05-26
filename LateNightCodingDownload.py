@@ -40,13 +40,19 @@ def get_makefile_deps() -> list:
 def get_cpp_deps(cpp_name: str) -> list:
     deps = []
     lines = get_file_lines(cpp_name)
-    regex = re.compile("#include \"(.*)\"\\s")
+    regex = re.compile("#include\\s+\"(.*)\"\\s")
+    regex_glsl = re.compile("\"(\\w*\\.glsl)\"")
     for line in lines:
         match = regex.match(line)
         if match:
             include = match.group(1).strip()
             logging.info("Remembering header dependency " + include)
             deps.append(include)
+        match = regex_glsl.findall(line)
+        if match:
+            logging.info("Remembering GSLS files " + str(match))
+            deps.extend(match)
+
     return deps
 
 
