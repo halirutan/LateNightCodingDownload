@@ -1,9 +1,8 @@
 # Download script for Jens Krüger's Late Night Coding sessions
 
-Downloads all files of one of the toy projects written during [C++ Jens' streams](https://www.twitch.tv/jhkrueger).
+Downloads all files of one of the toy projects written during the [C++ streams of Jens Krüger](https://www.twitch.tv/jhkrueger).
 It works by downloading the `makefile` first and then trying to stupidly tracking all dependencies.
-The script **overwrites** existing files and it only tracks dependencies coming from the `makefile` and downloaded
-`cpp` files.
+The script **overwrites** existing files in the current directory, and it only tracks dependencies coming from the `makefile` and the `#include` primitives of the downloaded `cpp` files.
 
 ## Usage
 
